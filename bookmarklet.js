@@ -4,34 +4,45 @@ javascript:(function(){
     return
   }
   let obj = {
-    p: document.querySelector('.img-job-icon').src.match(/\/([0-9]{6})\.png/)[1],
+    p: parseInt(window.Game.view.deck_model.attributes.deck.pc.job.master.id, 10),
+    ps: [],  // Skills
     c: [],
-    cl: [],
+    cl: [],  // Level
+    cs: [],  // Stars
     s: [],
+    sl: [],  // Level
+    ss: [],  // Stars
     w: [],
-    wl: []
+    wl: [],  // Skill level
+    wll: [], // Level
+    v: 2
   };
 
-  document.querySelectorAll('.img-npc').forEach(e => {
-    obj.c.push(e.src ? e.src.match(/\/([0-9]{7})0{3}_/)[1] : null);
-    obj.cl.push(e.src ? e.parentNode.parentNode.querySelector('.level').innerText.match(/[0-9]+/)[0] : null)
-  });
- 
-  document.querySelectorAll('.img-summon-main').forEach(e => {
-    obj.s.push(e.src ? e.src.match(/\/([0-9]{7})0{3}/)[1] : null)
-  });
-  document.querySelectorAll('.img-summon-sub').forEach(e => {
-    obj.s.push(e.src ? e.src.match(/\/([0-9]{7})0{3}/)[1] : null)
-  });
- 
-  document.querySelectorAll('.img-weapon-main').forEach(e => {
-    obj.w.push(e.src ? e.src.match(/\/([0-9]{8})0{2}\.jpg/)[1] : null);
-    obj.wl.push(e.src ? e.parentNode.parentNode.parentNode.querySelector('.txt-slv-value').title : null)
-  });
-  document.querySelectorAll('.img-weapon-sub').forEach(e => {
-    obj.w.push(e.src ? e.src.match(/\/([0-9]{8})0{2}\.jpg/)[1] : null);
-    obj.wl.push(e.src ? e.parentNode.parentNode.querySelector('.txt-slv-value').title : null)
+  for (let i=0; i<4-window.Game.view.deck_model.attributes.deck.pc.set_action.length; i++) {
+    obj.ps.push(null)
+  }
+  Object.values(window.Game.view.deck_model.attributes.deck.pc.set_action).forEach(e => {
+    obj.ps.push(e.id ? e.name : null)
   });
 
+  Object.values(window.Game.view.deck_model.attributes.deck.npc).forEach(e => {
+    obj.c.push(e.master ? parseInt(e.master.id.slice(0, -3), 10) : null);
+    obj.cl.push(e.param ? parseInt(e.param.level, 10) : null);
+    obj.cs.push(e.param ? parseInt(e.param.evolution, 10) : null)
+  });
+
+  Object.values(window.Game.view.deck_model.attributes.deck.pc.summons).forEach(e => {
+    obj.s.push(e.master ? parseInt(e.master.id.slice(0, -3), 10) : null);
+    obj.sl.push(e.param ? parseInt(e.param.level, 10) : null);
+    obj.ss.push(e.param ? parseInt(e.param.evolution, 10) : null)
+  });
+
+  Object.values(window.Game.view.deck_model.attributes.deck.pc.weapons).forEach(e => {
+    obj.w.push(e.master ? parseInt(e.master.id.slice(0, -2), 10) : null);
+    obj.wl.push(e.param ? parseInt(e.param.skill_level, 10) : null);
+    obj.wll.push(e.param ? parseInt(e.param.level, 10) : null)
+  });
+
+  //alert(JSON.stringify(obj));
   window.open('https://www.granblue.party/builder?l=' + encodeURIComponent(JSON.stringify(obj)), '_newtab');
 }())

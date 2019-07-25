@@ -2,14 +2,11 @@
 A Chrome bookmarklet to export a party from GBF to [granblue.party](http://www.granblue.party)
 
 ## Version
-1.0
+2.0
 
 ## Restrictions
-* Class skills cannot be detected since they are not shown on the Party page
-* Since the Party page does not contain enough data, the number of stars is approximated
-  * For characters, they are based on the level of the character
-  * For weapons, they are based on Skill Level
-  * For summons, they cannot be detected at all
+* Class skills detection only works with the English version of the game
+* Since the Party page does not contain enough data for weapons, the number of stars is approximated from the skill level
 
 ## Installation
 * In Chrome, open Bookmarks -> Bookmark Manager (or use Ctrl + Shift + O)
