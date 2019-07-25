@@ -22,7 +22,7 @@ javascript:(function(){
     obj.ps.push(null)
   }
   Object.values(window.Game.view.deck_model.attributes.deck.pc.set_action).forEach(e => {
-    obj.ps.push(e.id ? e.name : null)
+    obj.ps.push(e.id ? e.name.trim() : null)
   });
 
   Object.values(window.Game.view.deck_model.attributes.deck.npc).forEach(e => {
