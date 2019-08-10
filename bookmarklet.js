@@ -17,9 +17,10 @@ javascript:(function(){
     sp: [],  // Pluses
     w: [],
     wl: [],  // Skill level
+    wsn: [], // Skill names
     wll: [], // Level
     wp: [],  // Pluses
-    v: 3
+    v: 4
   };
 
   for (let i=0; i<4-window.Game.view.deck_model.attributes.deck.pc.set_action.length; i++) {
@@ -47,6 +48,11 @@ javascript:(function(){
   Object.values(window.Game.view.deck_model.attributes.deck.pc.weapons).forEach(e => {
     obj.w.push(e.master ? parseInt(e.master.id.slice(0, -2), 10) : null);
     obj.wl.push(e.param ? parseInt(e.param.skill_level, 10) : null);
+    obj.wsn.push(e.param ? [
+      e.skill1 ? e.skill1.name : null,
+      e.skill2 ? e.skill2.name : null,
+      e.skill3 ? e.skill3.name : null
+    ] : null);
     obj.wll.push(e.param ? parseInt(e.param.level, 10) : null);
     obj.wp.push(e.param ? parseInt(e.param.quality, 10) : null)
   });
