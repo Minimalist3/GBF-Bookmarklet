@@ -9,13 +9,17 @@ javascript:(function(){
     c: [],
     cl: [],  // Level
     cs: [],  // Stars
+    cp: [],  // Pluses
+    cwr: [], // Waifu ring
     s: [],
     sl: [],  // Level
     ss: [],  // Stars
+    sp: [],  // Pluses
     w: [],
     wl: [],  // Skill level
     wll: [], // Level
-    v: 2
+    wp: [],  // Pluses
+    v: 3
   };
 
   for (let i=0; i<4-window.Game.view.deck_model.attributes.deck.pc.set_action.length; i++) {
@@ -28,19 +32,23 @@ javascript:(function(){
   Object.values(window.Game.view.deck_model.attributes.deck.npc).forEach(e => {
     obj.c.push(e.master ? parseInt(e.master.id.slice(0, -3), 10) : null);
     obj.cl.push(e.param ? parseInt(e.param.level, 10) : null);
-    obj.cs.push(e.param ? parseInt(e.param.evolution, 10) : null)
+    obj.cs.push(e.param ? parseInt(e.param.evolution, 10) : null);
+    obj.cp.push(e.param ? parseInt(e.param.quality, 10) : null);
+    obj.cwr.push(e.param ? e.param.has_npcaugment_constant : null);
   });
 
   Object.values(window.Game.view.deck_model.attributes.deck.pc.summons).forEach(e => {
     obj.s.push(e.master ? parseInt(e.master.id.slice(0, -3), 10) : null);
     obj.sl.push(e.param ? parseInt(e.param.level, 10) : null);
-    obj.ss.push(e.param ? parseInt(e.param.evolution, 10) : null)
+    obj.ss.push(e.param ? parseInt(e.param.evolution, 10) : null);
+    obj.sp.push(e.param ? parseInt(e.param.quality, 10) : null)
   });
 
   Object.values(window.Game.view.deck_model.attributes.deck.pc.weapons).forEach(e => {
     obj.w.push(e.master ? parseInt(e.master.id.slice(0, -2), 10) : null);
     obj.wl.push(e.param ? parseInt(e.param.skill_level, 10) : null);
-    obj.wll.push(e.param ? parseInt(e.param.level, 10) : null)
+    obj.wll.push(e.param ? parseInt(e.param.level, 10) : null);
+    obj.wp.push(e.param ? parseInt(e.param.quality, 10) : null)
   });
 
   //alert(JSON.stringify(obj));

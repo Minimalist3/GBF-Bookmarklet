@@ -2,7 +2,11 @@
 A Chrome bookmarklet to export a party from GBF to [granblue.party](http://www.granblue.party)
 
 ## Version
-2.0
+3.0
+
+## Changelog
+* 3.0: Support for + Bonus and Perpetuity Ring
+* 2.0: Support for Stars count abd MC skills
 
 ## Restrictions
 * Class skills detection only works with the English version of the game
