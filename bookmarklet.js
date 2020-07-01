@@ -20,14 +20,14 @@ javascript:(function(){
     wsn: [], // Skill names
     wll: [], // Level
     wp: [],  // Pluses
-    v: 4
+    v: 5
   };
 
   for (let i=0; i<4-window.Game.view.deck_model.attributes.deck.pc.set_action.length; i++) {
     obj.ps.push(null)
   }
   Object.values(window.Game.view.deck_model.attributes.deck.pc.set_action).forEach(e => {
-    obj.ps.push(e.id ? e.name.trim() : null)
+    obj.ps.push(e.name ? e.name.trim() : null)
   });
 
   Object.values(window.Game.view.deck_model.attributes.deck.npc).forEach(e => {
