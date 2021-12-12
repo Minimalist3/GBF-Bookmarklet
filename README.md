@@ -2,9 +2,10 @@
 A Chrome bookmarklet to export a party from GBF to [granblue.party](http://www.granblue.party)
 
 ## Version
-5.0
+6.0
 
 ## Changelog
+* 6.0: Support for Sub auras
 * 5.0: Fix MC skills import
 * 4.0: Support for weapon keys (Atma, Ultima, ...)
 * 3.0: Support for + Bonus and Perpetuity Ring

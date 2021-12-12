@@ -20,7 +20,7 @@ javascript:(function(){
     wsn: [], // Skill names
     wll: [], // Level
     wp: [],  // Pluses
-    v: 5
+    v: 6
   };
 
   for (let i=0; i<4-window.Game.view.deck_model.attributes.deck.pc.set_action.length; i++) {
@@ -39,6 +39,16 @@ javascript:(function(){
   });
 
   Object.values(window.Game.view.deck_model.attributes.deck.pc.summons).forEach(e => {
+    obj.s.push(e.master ? parseInt(e.master.id.slice(0, -3), 10) : null);
+    obj.sl.push(e.param ? parseInt(e.param.level, 10) : null);
+    obj.ss.push(e.param ? parseInt(e.param.evolution, 10) : null);
+    obj.sp.push(e.param ? parseInt(e.param.quality, 10) : null)
+  });
+  obj.s.push(null);
+  obj.sl.push(null);
+  obj.ss.push(null);
+  obj.sp.push(null);
+  Object.values(window.Game.view.deck_model.attributes.deck.pc.sub_summons).forEach(e => {
     obj.s.push(e.master ? parseInt(e.master.id.slice(0, -3), 10) : null);
     obj.sl.push(e.param ? parseInt(e.param.level, 10) : null);
     obj.ss.push(e.param ? parseInt(e.param.evolution, 10) : null);
